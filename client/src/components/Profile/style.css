@@ -1,0 +1,48 @@
+[data-letters]:before {
+  content: attr(data-letters);
+  display: inline-block;
+  font-size: 1em;
+  width: 2.5em;
+  height: 2.5em;
+  line-height: 2.5em;
+  text-align: center;
+  border-radius: 50%;
+  background: #3ca0e7;
+  vertical-align: middle;
+  margin-right: 1em;
+  color: white;
+}
+
+.profile-card {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 400px;
+  margin: auto;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.profile-btn {
+  background-color: #3ca0e7;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 40%;
+  opacity: 0.9;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.profile-btn:hover {
+  opacity: 1;
+}
+
+h4 {
+  position: relative;
+  top: -60px;
+  left: 160px;
+  color: #3ca0e7;
+}

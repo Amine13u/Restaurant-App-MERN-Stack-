@@ -1,0 +1,8 @@
+.not-Found {
+  margin-top: 70px;
+  color: rgb(161, 11, 11);
+}
+
+.not-Found + p {
+  font-size: 26px;
+}

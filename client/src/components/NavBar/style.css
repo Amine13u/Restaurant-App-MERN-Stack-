@@ -1,0 +1,52 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 22px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  /* position: fixed;
+  top: 0;
+  right: 30%; */
+}
+
+.primary-navigation {
+  margin: 0 auto;
+  display: block;
+
+  padding: 120px 0 0 0;
+  text-align: center;
+  font-size: 16px;
+}
+
+ul li {
+  list-style: none;
+  margin: 0 auto;
+  border-left: 2px solid #3ca0e7;
+  display: inline-block;
+  padding: 0 30px;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  font-family: arvo;
+}
+
+li a {
+  color: black;
+}
+
+li a:hover {
+  color: #3ca0e7;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #3ca0e7;
+}

@@ -1,0 +1,108 @@
+.product-card {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 200px;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.product-btn {
+  background-color: #3ca0e7;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 60%;
+  opacity: 0.9;
+  border-radius: 5px;
+  margin: 0 5px 10px 0;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 30px;
+  max-height: 130px;
+}
+
+.menu-list {
+  margin: 50px 15px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.admin-btn {
+  background-color: #3ca0e7;
+  color: white;
+  padding: 8px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 40%;
+  opacity: 0.9;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.admin-btn:hover,
+.product-btn:hover {
+  opacity: 1;
+}
+
+.add-btn {
+  font-size: 25px;
+  width: 2.5em;
+  height: 2.5em;
+  line-height: 2.5em;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #3ca0e7;
+  vertical-align: middle;
+  margin: 0 10px 10px 1em;
+  color: white;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.add-btn:hover,
+.comment-btn:hover {
+  color: black;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgb(200, 200, 200);
+}
+
+h5 {
+  border: 1px solid rgba(0, 0, 0, 0.075);
+  padding: 2px 15px;
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.comment-btn {
+  font-size: 10px;
+  width: 2.5em;
+  height: 2.5em;
+  line-height: 2.5em;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #3ca0e7;
+  vertical-align: middle;
+  margin: 5px 0;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

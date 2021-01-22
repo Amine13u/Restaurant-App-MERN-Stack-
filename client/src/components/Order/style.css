@@ -1,0 +1,45 @@
+.order-card {
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 300px;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.order-continer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: gray;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.cart {
+  margin: 10px;
+  padding: 10px;
+}
+
+.no-order {
+  margin-top: 70px;
+  color: rgb(161, 11, 11);
+  font-size: 26px;
+}
+
+/* .cancel-btn {
+  position: fixed;
+  top: 0;
+  left: 0;
+} */
