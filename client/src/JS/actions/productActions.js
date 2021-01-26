@@ -7,6 +7,7 @@ import {
   ADD_PRODUCT,
   ADD_COMMENT,
   ADD_PRODUCT_TO_CART,
+  UPDATE_PRODUCT,
 } from "../const";
 
 export const getProducts = () => async (dispatch) => {
@@ -87,6 +88,31 @@ export const createProduct = (formData) => async (dispatch) => {
 
     dispatch({
       type: ADD_PRODUCT,
+      payload: data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PRODUCT_ERROR,
+    });
+  }
+};
+
+export const updateProduct = (formData, productID) => async (dispatch) => {
+  const options = {
+    headers: {
+      authorization: localStorage.getItem("token"),
+    },
+  };
+
+  try {
+    const { data } = await axios.post(
+      `/api/product/${productID}`,
+      formData,
+      options
+    );
+
+    dispatch({
+      type: UPDATE_PRODUCT,
       payload: data,
     });
   } catch (err) {

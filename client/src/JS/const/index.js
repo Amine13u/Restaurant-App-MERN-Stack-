@@ -13,6 +13,7 @@ export const PRODUCT_ERROR = "PRODUCT_ERROR";
 export const RATE_PRODUCT = "RATE_PRODUCT";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const ADD_PRODUCT = "ADD_PRODUCT";
+export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 export const ADD_COMMENT = "ADD_COMMENT";
 // export const DELETE_COMMENT = "DELETE_COMMENT";
 export const GET_ORDERS = "GET_ORDERS";

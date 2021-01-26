@@ -7,6 +7,7 @@ import {
   ADD_COMMENT,
   ADD_PRODUCT_TO_CART,
   CLEAR_ORDER,
+  UPDATE_PRODUCT,
 } from "../const";
 
 const initialState = {
@@ -51,10 +52,16 @@ const productReducer = (state = initialState, { type, payload }) => {
     case ADD_PRODUCT:
       return {
         ...state,
-        // products: [...state.products, payload],
-        products: state.products
-          .filter((product) => product._id !== payload._id)
-          .concat(payload),
+        products: [...state.products, payload],
+
+        isLoading: false,
+      };
+    case UPDATE_PRODUCT:
+      return {
+        ...state,
+        products: state.products.map((product) =>
+          product._id === payload.productID ? payload : product
+        ),
         isLoading: false,
       };
     case ADD_COMMENT:

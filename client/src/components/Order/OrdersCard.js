@@ -30,6 +30,9 @@ const OrdersCard = () => {
         totalPrice: 390,
       })
     );
+    dispatch({
+      type: CLEAR_ORDER,
+    });
   };
 
   return (

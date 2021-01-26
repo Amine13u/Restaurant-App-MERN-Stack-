@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ReactRateComponent from "react-rate-component";
 import {
   addProductToCart,
-  createProduct,
+  updateProduct,
 } from "../../JS/actions/productActions";
 
 import {
@@ -61,24 +61,25 @@ const ProductCard = ({ product }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createProduct(formDataUpdate));
+    dispatch(updateProduct(formDataUpdate, product._id));
     // dispatch(getProducts());
-    setFormDataUpdate({
-      name: "",
-      price: 0,
-    });
+    // setFormDataUpdate({
+    //   name: "",
+    //   price: 0,
+    // });
     setToggle(false);
+    window.location.reload();
   };
 
   return (
     <Fragment>
       <div className="product-card">
-        <img
+        {/* <img
           src={`/img/${product.name}.jpg`}
           alt={product.name}
           width="100%"
           height="150"
-        ></img>
+        ></img> */}
         <h2>{capitalize(product.name)} </h2>
         <h2>{product.price} $</h2>
         {!isAuth && (

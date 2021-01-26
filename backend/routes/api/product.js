@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const {
   getProducts,
-  createOrUpdateProduct,
+  createProduct,
+  updateProduct,
   deleteProduct,
   commentProduct,
   deleteProductComment,
@@ -22,13 +23,19 @@ router.get("/", getProducts);
 // @description create product
 // @access PRIVATE
 
+router.post("/", auth, isAdmin, productRules(), validator, createProduct);
+
+// @route POST api/product/productID
+// @description update product by id
+// @access PRIVATE
+
 router.post(
-  "/",
+  "/:productID",
   auth,
   isAdmin,
   productRules(),
   validator,
-  createOrUpdateProduct
+  updateProduct
 );
 
 // @route DELETE api/product/:productID

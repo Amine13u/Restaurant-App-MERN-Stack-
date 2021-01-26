@@ -1,9 +1,9 @@
 body {
   text-align: center;
   font-family: arvo;
-  /* background-image: url(https://wallpapercave.com/wp/wp1874163.jpg);
+  background-image: url(https://wallpapercave.com/wp/wp1874163.jpg);
   background-size: cover;
-  background-repeat: no-repeat; */
+  background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.025);
   overflow-y: scroll;
 }

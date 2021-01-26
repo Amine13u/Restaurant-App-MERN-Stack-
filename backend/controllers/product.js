@@ -15,7 +15,7 @@ const getProducts = async (req, res) => {
   }
 };
 
-const createOrUpdateProduct = async (req, res) => {
+const createProduct = async (req, res) => {
   const { name, price, comment, rate } = req.body;
   const productFields = {};
 
@@ -25,23 +25,33 @@ const createOrUpdateProduct = async (req, res) => {
   if (rate) productFields.rate = rate;
 
   try {
-    let product = await Product.findOne({ name });
-
-    if (product) {
-      product = await Product.findOneAndUpdate(
-        { name },
-        { $set: productFields },
-        { new: true }
-      );
-      return res.json(product);
-    }
-
     product = new Product(productFields);
     await product.save();
 
     res.json(product);
   } catch (error) {
     console.error(error.message);
+  }
+};
+
+const updateProduct = async (req, res) => {
+  const { name, price, comment, rate } = req.body;
+  const productFields = {};
+
+  if (name) productFields.name = name;
+  if (price) productFields.price = price;
+  if (comment) productFields.comment = comment;
+  if (rate) productFields.rate = rate;
+
+  try {
+    let product = await Product.findByIdAndUpdate(
+      { _id: req.params.productID },
+      { $set: productFields },
+      { new: true }
+    );
+    return res.json(product);
+  } catch (error) {
+    console.error(error);
   }
 };
 
@@ -127,9 +137,10 @@ const rateProduct = async (req, res) => {
 
 module.exports = {
   getProducts,
-  createOrUpdateProduct,
+  createProduct,
   deleteProduct,
   commentProduct,
   deleteProductComment,
   rateProduct,
+  updateProduct,
 };
