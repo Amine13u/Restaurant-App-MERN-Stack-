@@ -8,6 +8,8 @@ import {
   ADD_COMMENT,
   ADD_PRODUCT_TO_CART,
   UPDATE_PRODUCT,
+  REMOVE_FROM_CART,
+  ADJUST_ITEM_QTY,
 } from "../const";
 
 export const getProducts = () => async (dispatch) => {
@@ -171,19 +173,30 @@ export const addComment = (text, productID) => async (dispatch) => {
 //   }
 // };
 
-export const addProductToCart = (productID) => async (dispatch) => {
-  try {
-    const { data } = await axios.get("/api/product");
+export const addProductToCart = (productID) => {
+  return {
+    type: ADD_PRODUCT_TO_CART,
+    payload: {
+      id: productID,
+    },
+  };
+};
 
-    const product = data.filter((prod) => prod._id === productID);
+export const removeFromCart = (itemID) => {
+  return {
+    type: REMOVE_FROM_CART,
+    payload: {
+      id: itemID,
+    },
+  };
+};
 
-    dispatch({
-      type: ADD_PRODUCT_TO_CART,
-      payload: product,
-    });
-  } catch (err) {
-    dispatch({
-      type: PRODUCT_ERROR,
-    });
-  }
+export const adjustItemQty = (itemID, qty) => {
+  return {
+    type: ADJUST_ITEM_QTY,
+    payload: {
+      id: itemID,
+      qty,
+    },
+  };
 };

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { CLEAR_ORDER } from "../../JS/const";
 // import * as R from "ramda";
@@ -6,12 +6,21 @@ import CartItem from "./CartItem";
 import { createOrder } from "../../JS/actions/orderActions";
 
 const OrdersCard = () => {
-  const products = useSelector((state) => state.productReducer.productOrdred);
   // const orders = R.uniqWith(R.eqProps, products);
+  const products = useSelector((state) => state.productReducer.productOrdred);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    let price = 0;
+
+    products.forEach((item) => {
+      price += item.qty * item.price;
+    });
+
+    setTotal(price);
+  }, [products, total, setTotal]);
 
   const dispatch = useDispatch();
-
-  const [total, setTotal] = useState(0);
 
   const handleCancel = () => {
     dispatch({
@@ -22,12 +31,11 @@ const OrdersCard = () => {
   const handleConfirm = () => {
     dispatch(
       createOrder({
-        products: [
-          { product: "5ff9dad34a55d00cc0118fd6", quantity: 10 },
-          { product: "5ff9dad34a55d00cc0118fd6", quantity: 10 },
-          { product: "5ff9dad34a55d00cc0118fd6", quantity: 10 },
-        ],
-        totalPrice: 390,
+        products: products.map((obj) => ({
+          product: obj._id,
+          quantity: obj.qty,
+        })),
+        totalPrice: total,
       })
     );
     dispatch({
@@ -48,13 +56,13 @@ const OrdersCard = () => {
         <CartItem
           product={product}
           key={Math.random()}
-          setTotal={setTotal}
-          total={total}
+          // setTotal={setTotal}
+          // total={total}
         />
       ))}
 
-      {/* <h3>
-        Total :{" "}
+      <h3>Total : {total} $</h3>
+      {/* {" "}
         {
           (products.length === 0
             ? 0
@@ -62,7 +70,7 @@ const OrdersCard = () => {
           0)
         }{" "}
         $
-      </h3> */}
+       */}
       {products.length !== 0 ? (
         <Fragment>
           <button onClick={handleConfirm} className="profile-btn">

@@ -8,6 +8,8 @@ import {
   ADD_PRODUCT_TO_CART,
   CLEAR_ORDER,
   UPDATE_PRODUCT,
+  REMOVE_FROM_CART,
+  ADJUST_ITEM_QTY,
 } from "../const";
 
 const initialState = {
@@ -35,7 +37,7 @@ const productReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         products: state.products.filter(
-          (product) => product._id !== payload.productID
+          (product) => product._id !== payload._id
         ),
         isLoading: false,
       };
@@ -43,7 +45,7 @@ const productReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         products: state.products.map((product) =>
-          product._id === payload.productID
+          product._id === payload._id
             ? { ...product, rate: payload.rate }
             : product
         ),
@@ -60,7 +62,7 @@ const productReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         products: state.products.map((product) =>
-          product._id === payload.productID ? payload : product
+          product._id === payload._id ? payload : product
         ),
         isLoading: false,
       };
@@ -68,19 +70,51 @@ const productReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         products: state.products.map((product) =>
-          product._id === payload.productID
+          product._id === payload._id
             ? { ...product, comment: payload.comment }
             : product
         ),
         isLoading: false,
       };
     case ADD_PRODUCT_TO_CART:
+      // Get Item data from products array
+      const product = state.products.find(
+        (product) => product._id === payload.id
+      );
+      // Check if Item is in cart already
+      const inCart = state.productOrdred.find((product) =>
+        product._id === payload.id ? true : false
+      );
       return {
         ...state,
-        productOrdred: state.productOrdred.concat(payload),
+        productOrdred: inCart
+          ? state.productOrdred.map((product) =>
+              product._id === payload.id
+                ? { ...product, qty: product.qty + 1 }
+                : product
+            )
+          : [...state.productOrdred, { ...product, qty: 1 }],
+
         isLoading: false,
       };
-
+    case REMOVE_FROM_CART:
+      return {
+        ...state,
+        productOrdred: state.productOrdred.filter(
+          (product) => product._id !== payload.id
+        ),
+        isLoading: false,
+      };
+    case ADJUST_ITEM_QTY:
+      return {
+        ...state,
+        productOrdred: state.productOrdred.map((product) =>
+          product._id === payload.id
+            ? { ...product, qty: +payload.qty }
+            : product
+        ),
+        isLoading: false,
+      };
     case CLEAR_ORDER:
       return {
         ...state,

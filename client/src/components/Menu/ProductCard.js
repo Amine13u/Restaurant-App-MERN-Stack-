@@ -68,7 +68,6 @@ const ProductCard = ({ product }) => {
     //   price: 0,
     // });
     setToggle(false);
-    window.location.reload();
   };
 
   return (

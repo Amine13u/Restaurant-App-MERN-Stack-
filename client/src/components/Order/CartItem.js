@@ -1,10 +1,19 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { adjustItemQty, removeFromCart } from "../../JS/actions/productActions";
 
 const CartItem = ({ product }) => {
-  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(product.qty);
+
+  if (quantity === 0) {
+    dispatch(removeFromCart(product._id));
+  }
 
   const handleUpdate = (e) => {
     setQuantity(e.target.value);
+
+    dispatch(adjustItemQty(product._id, e.target.value));
   };
 
   function capitalize(s) {
